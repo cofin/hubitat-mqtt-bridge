@@ -1,0 +1,8 @@
+hubitat_host: "192.168.1.21"
+hubitat_maker_token: "<TOKEN HERE>"
+hubitat_maker_app_id: "5"
+mqtt_host: "192.168.1.20"
+mqtt_port: "1883"
+mqtt_username: "mqtt_user"
+mqtt_password: "password123"
+mqtt_topic_base: "home/hubitat"

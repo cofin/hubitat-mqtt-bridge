@@ -1,0 +1,6 @@
+aiohttp
+websockets
+asyncio
+pyjson
+pyyaml
+hbmqtt
