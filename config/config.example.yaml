@@ -1,0 +1,7 @@
+hubitat_host: "hubitat host IP"
+hubitat_maker_token: "hubit maker token"
+hubitat_maker_app_id: "hubitat maker IP ID"
+mqtt_host: "mqtt host"
+mqtt_port: "mqtt port"
+mqtt_username: mqtt
+mqtt_password: "mqtt password"
