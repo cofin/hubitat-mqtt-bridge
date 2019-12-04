@@ -1,9 +1,12 @@
 .idea
+src/config/config.yaml
 config/config.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
+*.pyd
 *$py.class
 
 # C extensions
