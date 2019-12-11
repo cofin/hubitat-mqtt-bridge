@@ -1,5 +1,5 @@
-from .logger import logger
-from .config import config
+from logger import logger
+from config import config
 from hbmqtt.client import MQTTClient
 from hbmqtt.mqtt.constants import QOS_0, QOS_1, QOS_2
 import websockets
@@ -56,16 +56,19 @@ class HubitatApi:
             print(url)
             async with aiohttp.ClientSession() as session:
                 async with session.get(url) as resp:
-                    data = await resp.json(content_type=None)  # content_type='text/html;charset=utf-8')
+                    # content_type='text/html;charset=utf-8')
+                    data = await resp.json(content_type=None)
                     if resp.status == 200:
-                        logger.info(f"send command to hubitat: {url}\n   output: {data}")
+                        logger.info(
+                            f"send command to hubitat: {url}\n   output: {data}")
 
                         # success
                         print(data)
                         if data:
                             for attr in data['attributes']:
                                 if attr['name'] != 'checkInterval':
-                                    print(f"{device_id}/{attr['name']}/state {attr['currentValue']}")
+                                    print(
+                                        f"{device_id}/{attr['name']}/state {attr['currentValue']}")
                                     event = {'source': 'EVENT',
                                              'name': attr['name'],
                                              'value': attr['currentValue'],
@@ -73,7 +76,8 @@ class HubitatApi:
                                     await self._enqueue(event, event_queue)
 
                     else:
-                        logger.info(f"error sending command to hubitat: {data}")
+                        logger.info(
+                            f"error sending command to hubitat: {data}")
 
     async def publish_homeassistant_commands(self, queue):
         mqtt_config = {
@@ -112,4 +116,3 @@ class HubitatApi:
         finally:
             await mqtt_client.unsubscribe([topic])
             await mqtt_client.disconnect()
-
